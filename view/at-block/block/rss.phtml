@@ -1,0 +1,12 @@
+<?php if (isset($this->title)): ?>
+    <h2><?php echo $this->title ?></h2>
+<?php endif; ?>
+
+<ul>
+    <?php foreach ($feeds as $feed): ?>
+    <li>
+        <a href="<?php echo $feed->url ?>" rel="nofollow" title="<?php echo $feed->title ?>"><?php echo $feed->title ?></a></strong>
+        <p><?php echo $feed->description ?></p>
+    </li>
+    <?php endforeach; ?>
+</ul>
