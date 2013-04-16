@@ -3,15 +3,15 @@
 namespace AtBlock\Block\Type;
 
 use AtBlock\Entity\BlockInterface;
-use AtBlock\Block\Type\TypeInterface;
 
 /**
- *
+ * Class Text
+ * @package AtBlock\Block\Type
  */
-class Text implements TypeInterface
+class Text extends AbstractType
 {
     /**
-     * {@inheritdoc}
+     * @return array
      */
     function getDefaultSettings()
     {
@@ -21,7 +21,8 @@ class Text implements TypeInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @param BlockInterface $block
+     * @return mixed|string
      */
     public function execute(BlockInterface $block)
     {

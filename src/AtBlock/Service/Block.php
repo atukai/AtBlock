@@ -6,16 +6,14 @@ use Zend\ServiceManager\ServiceManagerAwareInterface;
 use Zend\ServiceManager\ServiceManager;
 use ZfcBase\EventManager\EventProvider;
 use AtBlock\Mapper\BlockInterface as BlockMapperInterface;
-use AtBlock\Service\BlockServiceInterface;
 use AtBlock\Entity\Block as BlockEntity;
 
+/**
+ * Class Block
+ * @package AtBlock\Service
+ */
 class Block extends EventProvider implements ServiceManagerAwareInterface
 {
-    /**
-     * @var array
-     */
-    protected $blockServices;
-
     /**
      * @var BlockMapperInterface
      */
@@ -27,12 +25,9 @@ class Block extends EventProvider implements ServiceManagerAwareInterface
     protected $serviceManager;
 
     /**
-     *
+     * @var array
      */
-    public function __construct()
-    {
-        $this->blockServices = array();
-    }
+    protected $typeInstances = array();
 
     /**
      * @return BlockMapperInterface
@@ -87,9 +82,15 @@ class Block extends EventProvider implements ServiceManagerAwareInterface
      * @param BlockEntity $block
      * @return array|object
      */
-    public function getTypeService(BlockEntity $block)
+    public function getTypeInstance(BlockEntity $block)
     {
         $type = $block->getType();
-        return $this->serviceManager->get($type);
+
+        if (! isset($this->typeInstances[$type])) {
+            $typeInstance = $this->serviceManager->get($type);
+            $this->typeInstances[$type] = $typeInstance;
+        }
+
+        return $this->typeInstances[$type];
     }
 }

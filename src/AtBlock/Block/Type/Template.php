@@ -3,14 +3,13 @@
 namespace AtBlock\Block\Type;
 
 use Zend\View\Renderer\RendererInterface;
-use AtBlock\Block\Type\TypeInterface;
 use AtBlock\Entity\BlockInterface;
 
 /**
  * Class Template
  * @package AtBlock\Block\Type
  */
-class Template implements TypeInterface
+class Template extends AbstractType
 {
     /**
      * @var \Zend\View\Renderer\RendererInterface
@@ -18,6 +17,7 @@ class Template implements TypeInterface
     protected $renderer;
 
     /**
+     * @todo: Move to config
      * @var string
      */
     protected $template = 'at-block/block/base';

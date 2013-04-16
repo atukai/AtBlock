@@ -16,7 +16,8 @@ class Rss extends Template
     protected $template = 'at-block/block/rss';
 
     /**
-     * {@inheritdoc}
+     * @param BlockInterface $block
+     * @return mixed|string
      */
     public function execute(BlockInterface $block)
     {

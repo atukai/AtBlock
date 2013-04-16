@@ -1,6 +1,6 @@
 # AtBlock
 
-Version 0.1.0
+Version 0.1.1
 
 AtCms is a [Zend Framework 2](http://framework.zend.com) module which provides a base CMS functionality.
 Helps to create html pages and blocks. Blocks functionality is a port of [SonataAdminBundle](https://github.com/sonata-project/SonataBlockBundle)

@@ -2,16 +2,18 @@
 
 namespace AtBlock\View\Helper;
 
-use AtBlock\Block\BlockServiceInterface;
-use AtBlock\Block\Type\TypeInterface;
 use Zend\View\Helper\AbstractHelper;
+use AtBlock\Entity\BlockInterface;
 use AtBlock\Service\Block as BlockService;
-use AtBlock\Block\BlockRendererInterface;
 
+/**
+ * Class Block
+ * @package AtBlock\View\Helper
+ */
 class Block extends AbstractHelper
 {
     /**
-     * @var BlockServiceInterface
+     * @var BlockService
      */
     protected $blockService;
 
@@ -24,32 +26,21 @@ class Block extends AbstractHelper
     public function __invoke($type, $settings = array())
     {
         $block = $this->blockService->create($type, $settings);
-        if (!$block) {
+        if (!$block || (! $block instanceof BlockInterface)) {
             throw new \Exception('Block of "' . $type . '" type couldn\'t be create');
         }
 
-        /** @var \AtCms\Block\Type\TypeInterface $typeService  */
-        $typeService = $this->blockService->getTypeService($block);
-        return $typeService->execute($block);
+        $typeInstance = $this->blockService->getTypeInstance($block);
+        return $typeInstance->execute($block);
     }
 
     /**
-     * @param \AtCms\Service\Block $blockService
+     * @param BlockService $blockService
      * @return $this
      */
     public function setBlockService(BlockService $blockService)
     {
         $this->blockService = $blockService;
-        return $this;
-    }
-
-    /**
-     * @param $blockService
-     * @return $this
-     */
-    public function setBlockRenderer(BlockRendererInterface $renderer)
-    {
-        $this->blockRenderer = $renderer;
         return $this;
     }
 }
