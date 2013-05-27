@@ -101,6 +101,6 @@ or
 In your layout or view script just call view helper
 
 ```
-<?= $this->atBlock('block_type_simple', array('additional_content' => 'some content'))
-<?= $this->atBlock('block_type_customtemplate', array(...))
+<?= $this->atBlock('block_type_simple', array('additional_content' => 'some content')) ?>
+<?= $this->atBlock('block_type_customtemplate', array(...)) ?>
 ```
