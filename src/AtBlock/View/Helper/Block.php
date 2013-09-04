@@ -6,10 +6,6 @@ use Zend\View\Helper\AbstractHelper;
 use AtBlock\Entity\BlockInterface;
 use AtBlock\Service\Block as BlockService;
 
-/**
- * Class Block
- * @package AtBlock\View\Helper
- */
 class Block extends AbstractHelper
 {
     /**
@@ -18,16 +14,19 @@ class Block extends AbstractHelper
     protected $blockService;
 
     /**
-     * @param $type
+     * @param string|BlockInterface $type
      * @param array $settings
      * @return mixed
      * @throws \Exception
      */
     public function __invoke($type, $settings = array())
     {
-        $block = $this->blockService->create($type, $settings);
+        if (! $type instanceof BlockInterface) {
+            $block = $this->blockService->create($type, $settings);
+        }
+
         if (!$block || (! $block instanceof BlockInterface)) {
-            throw new \Exception('Block of "' . $type . '" type couldn\'t be create');
+            throw new \Exception('Block of "' . $type . '" type couldn\'t be created');
         }
 
         $typeInstance = $this->blockService->getTypeInstance($block);

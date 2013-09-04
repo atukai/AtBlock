@@ -1,6 +1,6 @@
 # AtBlock
 
-Version 0.1.1
+Version 0.1.2-dev
 
 AtBlock is a [Zend Framework 2](http://framework.zend.com) module which helps to create widgets and blocks.
 
@@ -12,7 +12,7 @@ AtBlock is a [Zend Framework 2](http://framework.zend.com) module which helps to
 
 ## Installation
 
- 1. Add `"atukai/at-block": ">=0.1.1"` to your `composer.json` file and run `php composer.phar update`.
+ 1. Add `"atukai/at-block": "0.1.*"` to your `composer.json` file and run `php composer.phar update`.
  2. Add `AtBlock` to your `config/application.config.php` file under the `modules` key.
 
 ## Configuration
@@ -65,15 +65,6 @@ class CustomTemplate extends Template
         return array(
             'additional_content' => '...',
         );
-    }
-
-    public function execute(BlockInterface $block)
-    {
-        $settings = array_merge($this->getDefaultSettings(), $block->getSettings());
-        return $this->render($this->getTemplate(), array(
-            'block'    => $block,
-            'settings' => $settings
-        ));
     }
 }
 ```

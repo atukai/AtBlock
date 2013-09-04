@@ -4,27 +4,15 @@ namespace AtBlock;
 
 use AtBlock\View\Helper\Block as BlockViewHelper;
 use AtBlock\Block\Type;
-use Zend\ModuleManager\ModuleManagerInterface;
 
 class Module
 {
-    /**
-     * @param \Zend\ModuleManager\ModuleManagerInterface $moduleManager
-     */
-    public function init(ModuleManagerInterface $moduleManager)
-    {
-        $moduleManager->loadModule('AtAdmin');
-    }
-
     /**
      * @return array
      */
     public function getAutoloaderConfig()
     {
         return array(
-            'Zend\Loader\ClassMapAutoloader' => array(
-                __DIR__ . '/autoload_classmap.php',
-            ),
             'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
@@ -47,10 +35,6 @@ class Module
     public function getServiceConfig()
     {
         return array(
-            'aliases' => array(
-                'atblock_zend_db_adapter' => 'Zend\Db\Adapter\Adapter',
-            ),
-
             'invokables' => array(
                 'atblock_service_block' => 'AtBlock\Service\Block',
             ),
