@@ -3,17 +3,25 @@
 namespace AtBlock\Block\Type;
 
 use AtBlock\Entity\BlockInterface;
+use Zend\Feed\Reader\Reader;
 
-/**
- * Class Rss
- * @package AtBlock\Block\Type
- */
 class Rss extends Template
 {
     /**
      * @var string
      */
     protected $template = 'at-block/block/rss';
+
+    /**
+     * @return array
+     */
+    public function getDefaultSettings()
+    {
+        return array(
+            'feed_uri' => 'http://framework.zend.com/blog/feed-rss.xml',
+            'feed_entries' => 10
+        );
+    }
 
     /**
      * @param BlockInterface $block
@@ -23,44 +31,33 @@ class Rss extends Template
     {
         $settings = array_merge($this->getDefaultSettings(), $block->getSettings());
 
-        $feeds = false;
-        if ($settings['feed_uri']) {
-            $options = array(
-                'http' => array(
-                    'user_agent' => 'AtCms/RSS Reader',
-                    'timeout' => 2,
-                )
+        $feed = Reader::import($settings['feed_uri']);
+        $data = array(
+            'title'        => $feed->getTitle(),
+            'link'         => $feed->getLink(),
+            'dateModified' => $feed->getDateModified(),
+            'description'  => $feed->getDescription(),
+            'language'     => $feed->getLanguage(),
+            'entries'      => array(),
+        );
+
+        foreach ($feed as $entry) {
+            $entryData = array(
+                'title'        => $entry->getTitle(),
+                'description'  => $entry->getDescription(),
+                'dateModified' => $entry->getDateModified(),
+                'authors'      => $entry->getAuthors(),
+                'link'         => $entry->getLink(),
+                'content'      => $entry->getContent()
             );
-
-            // retrieve contents with a specific stream context to avoid php errors
-            $content = @file_get_contents($settings['feed_uri'], false, stream_context_create($options));
-
-            if ($content) {
-                try {
-                    $feed = new \SimpleXMLElement($content);
-                    $title = $feed->channel->title;
-                    $feeds = $feed->channel->item;
-                } catch (\Exception $e) {
-                    // silently fail error
-                }
-            }
+            $data['entries'][] = $entryData;
         }
 
         return $this->render($this->getTemplate(), array(
             'block'    => $block,
-            'title'    => $title,
-            'feeds'    => $feeds,
+            'title'    => $data['title'],
+            'entries'  => array_slice($data['entries'], 0, $settings['feed_entries']),
             'settings' => $settings
         ));
-    }
-
-    /**
-     * @return array
-     */
-    public function getDefaultSettings()
-    {
-        return array(
-            'feed_uri' => 'http://framework.zend.com/blog/feed-rss.xml',
-        );
     }
 }
