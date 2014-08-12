@@ -40,6 +40,8 @@ class Module
             ),
 
             'factories' => array(
+                'AtBlock\BlockTypePluginManager' => 'AtBlock\Factory\BlockTypePluginManagerFactory',
+
                 'atblock_block_type_text' => function () {
                     return new Type\Text();
                 },
