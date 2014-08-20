@@ -36,7 +36,7 @@ class Module
     {
         return array(
             'invokables' => array(
-                'atblock_service_block' => 'AtBlock\Service\Block',
+                'atblock_service_block' => 'AtBlock\Service\BlockService',
             ),
 
             'factories' => array(

@@ -4,7 +4,7 @@ namespace AtBlock\View\Helper;
 
 use Zend\View\Helper\AbstractHelper;
 use AtBlock\Entity\BlockInterface;
-use AtBlock\Service\Block as BlockService;
+use AtBlock\Service\BlockService;
 
 class Block extends AbstractHelper
 {

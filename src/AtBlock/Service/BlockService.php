@@ -5,9 +5,9 @@ namespace AtBlock\Service;
 use Zend\ServiceManager\ServiceManagerAwareInterface;
 use Zend\ServiceManager\ServiceManager;
 use ZfcBase\EventManager\EventProvider;
-use AtBlock\Entity\Block as BlockEntity;
+use AtBlock\Entity\Block;
 
-class Block extends EventProvider implements ServiceManagerAwareInterface
+class BlockService extends EventProvider implements ServiceManagerAwareInterface
 {
     /**
      * @var ServiceManager
@@ -36,8 +36,7 @@ class Block extends EventProvider implements ServiceManagerAwareInterface
      */
     public function create($type, $settings)
     {
-        $block = new BlockEntity();
-        $block->setId(uniqid());
+        $block = new Block();
         $block->setType($type);
         $block->setSettings($settings);
         $block->setEnabled(true);
@@ -51,7 +50,7 @@ class Block extends EventProvider implements ServiceManagerAwareInterface
      * @param BlockEntity $block
      * @return array|object
      */
-    public function getTypeInstance(BlockEntity $block)
+    public function getTypeInstance(Block $block)
     {
         $type = $block->getType();
 
