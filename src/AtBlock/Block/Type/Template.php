@@ -54,7 +54,7 @@ class Template extends AbstractType
     }
 
     /**
-     * {@inheritdoc}
+     * @return array
      */
     public function getDefaultSettings()
     {
@@ -64,8 +64,9 @@ class Template extends AbstractType
     }
 
     /**
-     * @param string $template
+     * @param $template
      * @param array $params
+     * @return string
      */
     public function render($template, array $params = array())
     {

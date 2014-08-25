@@ -2,17 +2,16 @@
 
 namespace AtBlock\Service;
 
-use Zend\ServiceManager\ServiceManagerAwareInterface;
-use Zend\ServiceManager\ServiceManager;
+use AtBlock\Block\Type\BlockTypePluginManager;
 use ZfcBase\EventManager\EventProvider;
 use AtBlock\Entity\Block;
 
-class BlockService extends EventProvider implements ServiceManagerAwareInterface
+class BlockService extends EventProvider
 {
     /**
-     * @var ServiceManager
+     * @var BlockTypePluginManager
      */
-    protected $serviceManager;
+    protected $blockManager;
 
     /**
      * @var array
@@ -20,12 +19,12 @@ class BlockService extends EventProvider implements ServiceManagerAwareInterface
     protected $typeInstances = array();
 
     /**
-     * @param ServiceManager $serviceManager
+     * @param BlockTypePluginManager $manager
      * @return $this
      */
-    public function setServiceManager(ServiceManager $serviceManager)
+    public function setBlockManager(BlockTypePluginManager $manager)
     {
-        $this->serviceManager = $serviceManager;
+        $this->blockManager = $manager;
         return $this;
     }
 
@@ -47,15 +46,15 @@ class BlockService extends EventProvider implements ServiceManagerAwareInterface
     }
 
     /**
-     * @param BlockEntity $block
-     * @return array|object
+     * @param Block $block
+     * @return mixed
      */
     public function getTypeInstance(Block $block)
     {
         $type = $block->getType();
 
         if (! isset($this->typeInstances[$type])) {
-            $typeInstance = $this->serviceManager->get($type);
+            $typeInstance = $this->blockManager->get($type);
             $this->typeInstances[$type] = $typeInstance;
         }
 

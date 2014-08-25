@@ -1,6 +1,6 @@
 # AtBlock
 
-Version 0.1.2-dev
+Version 0.2.0-dev
 
 AtBlock is a [Zend Framework 2](http://framework.zend.com) module which helps to create widgets and blocks.
 
@@ -69,20 +69,32 @@ class CustomTemplate extends Template
 }
 ```
 
-Next you need to describe new block type in Service Manager
+Next you should add block type to plugin manager
 
 ```
-'block_type_simple' => function ($sm) {
-    return new SimpleBlockType();
-},
+'atblock' => array(
+    'atblock_block_plugin_manager' => array(
+        'factories' => array(
+            'block_type_simple' => function ($sm) {
+                return new SimpleBlockType();
+            },
+        )
+    ),
+),
 ```
 
 or
 
 ```
-'block_type_customtemplate' => function ($sm) {
-    return new CustomTemplate($sm->get('ViewRenderer'));
-},
+'atblock' => array(
+    'atblock_block_plugin_manager' => array(
+        'factories' => array(
+            'block_type_customtemplate' => function ($sm) {
+                return new CustomTemplate($sm->get('ViewRenderer'));
+            },
+        )
+    ),
+),
 ```
 
 ## Usage

@@ -8,6 +8,8 @@
  */
 
 $settings = array(
+    'atblock_block_plugin_manager' => array(
+    )
 );
 
 /**

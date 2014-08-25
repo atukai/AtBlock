@@ -22,7 +22,7 @@ class Text extends AbstractType
 
     /**
      * @param BlockInterface $block
-     * @return mixed|string
+     * @return mixed
      */
     public function execute(BlockInterface $block)
     {
