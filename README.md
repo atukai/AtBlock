@@ -75,7 +75,7 @@ Next you should add block type to plugin manager
 'atblock' => array(
     'atblock_block_plugin_manager' => array(
         'factories' => array(
-            'block_type_simple' => function ($sm) {
+            'block_type_simple' => function ($pluginManager) {
                 return new SimpleBlockType();
             },
         )
@@ -89,7 +89,7 @@ or
 'atblock' => array(
     'atblock_block_plugin_manager' => array(
         'factories' => array(
-            'block_type_customtemplate' => function ($sm) {
+            'block_type_customtemplate' => function ($pluginManager) {
                 return new CustomTemplate($sm->get('ViewRenderer'));
             },
         )

@@ -7,7 +7,7 @@ use Zend\Mvc\Service\AbstractPluginManagerFactory;
 use Zend\ServiceManager\Config;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class ResolversPluginManagerFactory extends AbstractPluginManagerFactory
+class BlockTypePluginManagerFactory extends AbstractPluginManagerFactory
 {
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

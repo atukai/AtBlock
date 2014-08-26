@@ -30,6 +30,7 @@ class Block extends AbstractHelper
         }
 
         $typeInstance = $this->blockService->getTypeInstance($block);
+
         return $typeInstance->execute($block);
     }
 

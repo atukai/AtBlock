@@ -8,17 +8,6 @@ namespace AtBlock\Entity;
 interface BlockInterface
 {
     /**
-     * @param $id
-     * @return mixed
-     */
-    public function setId($id);
-
-    /**
-     * @return mixed
-     */
-    public function getId();
-
-    /**
      * @param $name
      * @return mixed
      */

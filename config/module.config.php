@@ -10,12 +10,12 @@ return array(
                     return new Type\Text();
                 },
 
-                'atblock_block_type_template' => function ($sm) {
-                    return new Type\Template($sm->get('ViewRenderer'));
+                'atblock_block_type_template' => function ($pluginManager) {
+                    return new Type\Template($pluginManager->getServiceLocator()->get('ViewRenderer'));
                 },
 
-                'atblock_block_type_rss' => function ($sm) {
-                    return new Type\Rss($sm->get('ViewRenderer'));
+                'atblock_block_type_rss' => function ($pluginManager) {
+                    return new Type\Rss($pluginManager->getServiceLocator()->get('ViewRenderer'));
                 },
             )
         ),

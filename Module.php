@@ -53,9 +53,10 @@ class Module
     {
         return array(
             'factories' => array(
-                'atBlock' => function($sm) {
+                'atBlock' => function($pluginManager) {
                     $viewHelper = new BlockViewHelper();
-                    $viewHelper->setBlockService($sm->get('atblock_service_block'));
+                    $viewHelper->setBlockService($pluginManager->getServiceLocator()->get('atblock_service_block'));
+
                     return $viewHelper;
                 },
             ),

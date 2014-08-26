@@ -47,6 +47,11 @@ class Template extends AbstractType
     public function execute(BlockInterface $block)
     {
         $settings = array_merge($this->getDefaultSettings(), $block->getSettings());
+
+        if (isset($settings['template'])) {
+            $this->setTemplate($settings['template']);
+        }
+
         return $this->render($this->getTemplate(), array(
             'block'    => $block,
             'settings' => $settings

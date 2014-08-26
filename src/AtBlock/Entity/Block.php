@@ -5,7 +5,7 @@ namespace AtBlock\Entity;
 /**
  *  Abstract Block class that provides a default implementation of the block interface
  */
-abstract class AbstractBlock implements BlockInterface
+class Block implements BlockInterface
 {
     /**
      * @var string
