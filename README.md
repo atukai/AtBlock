@@ -1,12 +1,8 @@
-# AtBlock
-
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/atukai/AtBlock/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/atukai/AtBlock/?branch=master)
-
-Version 0.2.0-dev
+# AtBlock [0.2.0-dev]
 
 AtBlock is a [Zend Framework 2](http://framework.zend.com) module which helps to create widgets and blocks.
 
->This module is still under heavy development. Do not use it in production.
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/atukai/AtBlock/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/atukai/AtBlock/?branch=master)
 
 ## Requirements
 
