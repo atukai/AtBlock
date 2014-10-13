@@ -52,7 +52,7 @@ or if you want block render a template just extend Template type, specify templa
 also implement two methods:
 
 ```
-use AtBlock\Block\Type\TypeInterface;
+use AtBlock\Block\Type\Template;
 
 class CustomTemplate extends Template
 {
@@ -88,7 +88,7 @@ or
     'atblock_block_plugin_manager' => array(
         'factories' => array(
             'block_type_customtemplate' => function ($pluginManager) {
-                return new CustomTemplate($sm->get('ViewRenderer'));
+                return new CustomTemplate($pluginManager->getServiceLocator()->get('ViewRenderer'));
             },
         )
     ),

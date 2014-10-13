@@ -50,6 +50,7 @@ class Template extends AbstractType
 
         if (isset($settings['template'])) {
             $this->setTemplate($settings['template']);
+            unset($settings['template']);
         }
 
         return $this->render($this->getTemplate(), array(
