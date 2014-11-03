@@ -42,7 +42,8 @@ class Template extends AbstractType
     }
 
     /**
-     * {@inheritdoc}
+     * @param BlockInterface $block
+     * @return mixed|string
      */
     public function execute(BlockInterface $block)
     {
