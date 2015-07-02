@@ -6,6 +6,7 @@ AtBlock is a [Zend Framework 2](http://framework.zend.com) module which helps to
 
 ## Requirements
 
+* [PHP 5.4+] (http://php.net)
 * [Zend Framework 2](https://github.com/zendframework/zf2)
 
 ## Installation
