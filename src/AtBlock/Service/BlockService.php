@@ -8,7 +8,7 @@ use AtBlock\Entity\Block;
 
 class BlockService
 {
-    use EventManagerAwareTrait
+    use EventManagerAwareTrait;
 
     /**
      * @var BlockTypePluginManager

@@ -20,7 +20,7 @@ class Block implements BlockInterface
     /**
      * @var boolean
      */
-    protected $enabled;
+    protected $enabled = true;
 
     /**
      * @var integer
@@ -57,9 +57,8 @@ class Block implements BlockInterface
      */
     public function __construct()
     {
-        $this->settings = array();
-        $this->enabled  = false;
-        $this->children = array();
+        $this->settings = [];
+        $this->children = [];
     }
 
     /**
