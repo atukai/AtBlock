@@ -109,6 +109,7 @@ class Block implements BlockInterface
     }
 
     /**
+     * @param null $key
      * @return array
      */
     public function getSettings($key = null)

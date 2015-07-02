@@ -3,11 +3,13 @@
 namespace AtBlock\Service;
 
 use AtBlock\Block\Type\BlockTypePluginManager;
-use ZfcBase\EventManager\EventProvider;
+use Zend\EventManager\EventManagerAwareTrait;
 use AtBlock\Entity\Block;
 
-class BlockService extends EventProvider
+class BlockService
 {
+    use EventManagerAwareTrait
+
     /**
      * @var BlockTypePluginManager
      */
