@@ -18,16 +18,14 @@ class BlockService
     /**
      * @var array
      */
-    protected $typeInstances = array();
+    protected $typeInstances = [];
 
     /**
      * @param BlockTypePluginManager $manager
-     * @return $this
      */
-    public function setBlockManager(BlockTypePluginManager $manager)
+    public function __construct(BlockTypePluginManager $manager)
     {
         $this->blockManager = $manager;
-        return $this;
     }
 
     /**

@@ -12,13 +12,13 @@ class Module
      */
     public function getAutoloaderConfig()
     {
-        return array(
-            'Zend\Loader\StandardAutoloader' => array(
-                'namespaces' => array(
+        return [
+            'Zend\Loader\StandardAutoloader' => [
+                'namespaces' => [
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
-                ),
-            ),
-        );
+                ],
+            ],
+        ];
     }
 
     /**
@@ -34,16 +34,12 @@ class Module
      */
     public function getServiceConfig()
     {
-        return array(
-            'invokables' => array(
-
-            ),
-
-            'factories' => array(
-                'atblock_service_block' => 'AtBlock\Factory\BlockServiceFactory',
+        return [
+            'factories' => [
                 'AtBlock\BlockTypePluginManager' => 'AtBlock\Factory\BlockTypePluginManagerFactory',
-            ),
-        );
+                'atblock_service_block' => 'AtBlock\Factory\BlockServiceFactory',
+            ],
+        ];
     }
 
     /**
@@ -51,15 +47,15 @@ class Module
      */
     public function getViewHelperConfig()
     {
-        return array(
-            'factories' => array(
+        return [
+            'factories' => [
                 'atBlock' => function($pluginManager) {
                     $viewHelper = new BlockViewHelper();
                     $viewHelper->setBlockService($pluginManager->getServiceLocator()->get('atblock_service_block'));
 
                     return $viewHelper;
                 },
-            ),
-        );
+            ],
+        ];
     }
 }

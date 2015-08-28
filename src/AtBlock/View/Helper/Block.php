@@ -19,7 +19,7 @@ class Block extends AbstractHelper
      * @return mixed
      * @throws \Exception
      */
-    public function __invoke($type, $settings = array())
+    public function __invoke($type, $settings = [])
     {
         if (! $type instanceof BlockInterface) {
             $block = $this->blockService->create($type, $settings);
@@ -29,9 +29,7 @@ class Block extends AbstractHelper
             throw new \Exception('Block of "' . $type . '" type couldn\'t be created');
         }
 
-        $typeInstance = $this->blockService->getTypeInstance($block);
-
-        return $typeInstance->execute($block);
+        return $this->blockService->getTypeInstance($block)->execute($block);
     }
 
     /**

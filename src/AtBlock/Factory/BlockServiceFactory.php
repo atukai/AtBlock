@@ -10,9 +10,6 @@ class BlockServiceFactory extends AbstractPluginManagerFactory
 {
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $service = new BlockService();
-        $service->setBlockManager($serviceLocator->get('AtBlock\BlockTypePluginManager'));
-
-        return $service;
+        return new BlockService($serviceLocator->get('AtBlock\BlockTypePluginManager'));
     }
 }

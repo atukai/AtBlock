@@ -2,9 +2,6 @@
 
 namespace AtBlock\Entity;
 
-/**
- *  Abstract Block class that provides a default implementation of the block interface
- */
 class Block implements BlockInterface
 {
     /**

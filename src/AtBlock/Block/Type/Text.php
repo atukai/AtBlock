@@ -4,10 +4,6 @@ namespace AtBlock\Block\Type;
 
 use AtBlock\Entity\BlockInterface;
 
-/**
- * Class Text
- * @package AtBlock\Block\Type
- */
 class Text extends AbstractType
 {
     /**
@@ -15,9 +11,9 @@ class Text extends AbstractType
      */
     function getDefaultSettings()
     {
-        return array(
+        return [
             'content' => 'Insert your custom text here',
-        );
+        ];
     }
 
     /**

@@ -54,10 +54,10 @@ class Template extends AbstractType
             unset($settings['template']);
         }
 
-        return $this->render($this->getTemplate(), array(
+        return $this->render($this->getTemplate(), [
             'block'    => $block,
             'settings' => $settings
-        ));
+        ]);
     }
 
     /**
@@ -65,9 +65,9 @@ class Template extends AbstractType
      */
     public function getDefaultSettings()
     {
-        return array(
+        return [
             'content' => 'Insert your custom text here',
-        );
+        ];
     }
 
     /**
@@ -75,7 +75,7 @@ class Template extends AbstractType
      * @param array $params
      * @return string
      */
-    public function render($template, array $params = array())
+    public function render($template, array $params = [])
     {
         return $this->renderer->render($template, $params);
     }

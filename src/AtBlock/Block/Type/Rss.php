@@ -17,10 +17,10 @@ class Rss extends Template
      */
     public function getDefaultSettings()
     {
-        return array(
+        return [
             'feed_uri' => 'http://framework.zend.com/blog/feed-rss.xml',
             'feed_entries' => 10
-        );
+        ];
     }
 
     /**

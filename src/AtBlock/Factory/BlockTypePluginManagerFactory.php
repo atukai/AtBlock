@@ -12,7 +12,7 @@ class BlockTypePluginManagerFactory extends AbstractPluginManagerFactory
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $manager = new BlockTypePluginManager(
-            new Config($serviceLocator->get('Config')['atblock']['atblock_block_plugin_manager'])
+            new Config($serviceLocator->get('config')['atblock']['atblock_block_plugin_manager'])
         );
         $manager->setServiceLocator($serviceLocator);
 
