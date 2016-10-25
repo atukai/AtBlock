@@ -9,7 +9,7 @@ class Text extends AbstractType
     /**
      * @return array
      */
-    function getDefaultSettings()
+    public function getDefaultSettings()
     {
         return [
             'content' => 'Insert your custom text here',

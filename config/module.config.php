@@ -2,10 +2,10 @@
 
 use AtBlock\Block\Type;
 
-return array(
-    'atblock' => array(
-        'atblock_block_plugin_manager' => array(
-            'factories' => array(
+return [
+    'atblock' => [
+        'atblock_block_plugin_manager' => [
+            'factories' => [
                 'atblock_block_type_text' => function () {
                     return new Type\Text();
                 },
@@ -17,13 +17,13 @@ return array(
                 'atblock_block_type_rss' => function ($pluginManager) {
                     return new Type\Rss($pluginManager->getServiceLocator()->get('ViewRenderer'));
                 },
-            )
-        ),
-    ),
+            ]
+        ],
+    ],
 
-    'view_manager' => array(
-        'template_path_stack' => array(
+    'view_manager' => [
+        'template_path_stack' => [
             __DIR__ . '/../view',
-        ),
-    ),
-);
+        ],
+    ],
+];

@@ -98,7 +98,7 @@ class Block implements BlockInterface
      * @param array $settings
      * @return $this
      */
-    public function setSettings(array $settings = array())
+    public function setSettings(array $settings = [])
     {
         $this->settings = $settings;
         return $this;

@@ -14,6 +14,7 @@ interface TypeInterface
     public function getDefaultSettings();
 
     /**
+     * @param BlockInterface $block
      * @return mixed
      */
     public function execute(BlockInterface $block);
