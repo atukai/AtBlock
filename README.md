@@ -1,8 +1,6 @@
-# AtBlock [0.2.0-dev]
+# AtBlock
 
-AtBlock is a [Zend Framework 2](http://framework.zend.com) module which helps to create widgets and blocks.
-
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/atukai/AtBlock/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/atukai/AtBlock/?branch=master)
+AtBlock is a [Zend Framework 2/3](http://framework.zend.com) module which helps to create widgets and blocks.
 
 ## Requirements
 

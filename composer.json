@@ -1,9 +1,9 @@
 {
     "name": "atukai/at-block",
-    "description": "Blocks and widgets for ZF2",
+    "description": "Blocks and widgets for ZF2/ZF3",
     "type": "library",
     "keywords": [
-        "blocks", "widgets", "AtBlock", "atukai", "at", "zf2"
+        "blocks", "widgets", "AtBlock", "zf2", "zf3"
     ],
     "homepage": "https://github.com/atukai/AtBlock",
     "authors": [

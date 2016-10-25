@@ -3,18 +3,17 @@
 namespace AtBlock\Factory;
 
 use AtBlock\Block\Type\BlockTypePluginManager;
-use Zend\Mvc\Service\AbstractPluginManagerFactory;
+use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\Config;
-use Zend\ServiceManager\ServiceLocatorInterface;
 
-class BlockTypePluginManagerFactory extends AbstractPluginManagerFactory
+class BlockTypePluginManagerFactory
 {
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName)
     {
         $manager = new BlockTypePluginManager(
-            new Config($serviceLocator->get('config')['atblock']['atblock_block_plugin_manager'])
+            $container,
+            new Config($container->get('config')['atblock']['atblock_block_plugin_manager'])
         );
-        $manager->setServiceLocator($serviceLocator);
 
         return $manager;
     }
