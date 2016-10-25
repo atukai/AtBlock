@@ -13,10 +13,6 @@ return [
                 'atblock_block_type_template' => function ($pluginManager) {
                     return new Type\Template($pluginManager->getServiceLocator()->get('ViewRenderer'));
                 },
-
-                'atblock_block_type_rss' => function ($pluginManager) {
-                    return new Type\Rss($pluginManager->getServiceLocator()->get('ViewRenderer'));
-                },
             ]
         ],
     ],

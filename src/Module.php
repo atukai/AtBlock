@@ -2,6 +2,10 @@
 
 namespace AtBlock;
 
+use AtBlock\Block\Type\BlockTypePluginManager;
+use AtBlock\Factory\BlockServiceFactory;
+use AtBlock\Factory\BlockTypePluginManagerFactory;
+use AtBlock\Service\BlockService;
 use AtBlock\View\Helper\Block as BlockViewHelper;
 
 class Module
@@ -21,8 +25,8 @@ class Module
     {
         return [
             'factories' => [
-                'AtBlock\BlockTypePluginManager' => 'AtBlock\Factory\BlockTypePluginManagerFactory',
-                'atblock_service_block' => 'AtBlock\Factory\BlockServiceFactory',
+                BlockTypePluginManager::class => BlockTypePluginManagerFactory::class,
+                Service\BlockService::class => BlockServiceFactory::class,
             ],
         ];
     }
@@ -36,7 +40,7 @@ class Module
             'factories' => [
                 'atBlock' => function($pluginManager) {
                     $viewHelper = new BlockViewHelper();
-                    $viewHelper->setBlockService($pluginManager->getServiceLocator()->get('atblock_service_block'));
+                    $viewHelper->setBlockService($pluginManager->getServiceLocator()->get(BlockService::class));
 
                     return $viewHelper;
                 },

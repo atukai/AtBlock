@@ -8,13 +8,13 @@
  */
 
 $settings = array(
-    'atblock_block_plugin_manager' => array(
-    )
+    'atblock_block_plugin_manager' => [
+    ]
 );
 
 /**
  * You do not need to edit below this line
  */
-return array(
+return [
     'atblock' => $settings,
-);
+];

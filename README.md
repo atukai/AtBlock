@@ -8,10 +8,11 @@ AtBlock is a [Zend Framework 2](http://framework.zend.com) module which helps to
 
 * [PHP 5.6+] (http://php.net)
 * [Zend View](https://github.com/zendframework/zend-view)
+* [Zend ServiceManager](https://github.com/zendframework/zend-servicemanager)
 
 ## Installation
 
- 1. Add `"atukai/at-block": "dev-master"` to your `composer.json` file and run `php composer.phar update`.
+ 1. Run `composer require "atukai/at-block".
  2. Add `AtBlock` to your `config/application.config.php` file under the `modules` key.
 
 ## Configuration
@@ -35,9 +36,9 @@ class SimpleBlockType implements TypeInterface
 {
     public function getDefaultSettings()
     {
-        return array(
+        return [
             'additional_content' => '...',
-        );
+        ];
     }
 
     public function execute(BlockInterface $block)
@@ -70,7 +71,7 @@ class CustomTemplate extends Template
 Next you should add block type to plugin manager
 
 ```
-'atblock' => array(
+'atblock' => [
     'atblock_block_plugin_manager' => [
         'factories' => [
             'block_type_simple' => function ($pluginManager) {
@@ -78,13 +79,13 @@ Next you should add block type to plugin manager
             },
         ]
     ],
-),
+],
 ```
 
 or
 
 ```
-'atblock' => array(
+'atblock' => [
     'atblock_block_plugin_manager' => [
         'factories' => [
             'block_type_customtemplate' => function ($pluginManager) {
@@ -92,7 +93,7 @@ or
             },
         ]
     ],
-),
+],
 ```
 
 ## Usage
