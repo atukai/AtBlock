@@ -13,15 +13,12 @@
         }
     ],
     "require": {
-        "php": ">=5.4",
-        "zendframework/zendframework": "2.*"
+        "php": ">=5.6",
+        "zendframework/zend-view": "2.*"
     },
     "autoload": {
-        "psr-0": {
+        "psr-4": {
             "AtBlock\\": "src/"
-        },
-        "classmap": [
-            "./Module.php"
-        ]
+        }
     }
 }
