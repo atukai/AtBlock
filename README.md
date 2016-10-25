@@ -6,21 +6,20 @@ AtBlock is a [Zend Framework 2](http://framework.zend.com) module which helps to
 
 ## Requirements
 
-* [PHP 5.4+] (http://php.net)
-* [Zend Framework 2](https://github.com/zendframework/zf2)
+* [PHP 5.6+] (http://php.net)
+* [Zend View](https://github.com/zendframework/zend-view)
 
 ## Installation
 
- 1. Add `"atukai/at-block": "0.1.*"` to your `composer.json` file and run `php composer.phar update`.
+ 1. Add `"atukai/at-block": "dev-master"` to your `composer.json` file and run `php composer.phar update`.
  2. Add `AtBlock` to your `config/application.config.php` file under the `modules` key.
 
 ## Configuration
 
-There are three default block types:
+There are two default block types:
 
 1. Text
 2. Template
-3. Rss
 
 A block type is just a service which must implements the \AtBlock\Block\Type\TypeInterface interface.
 There is only one instance of a block type, however there are many block instances. So you can create many blocks of
@@ -61,9 +60,9 @@ class CustomTemplate extends Template
 
     public function getDefaultSettings()
     {
-        return array(
+        return [
             'additional_content' => '...',
-        );
+        ];
     }
 }
 ```
@@ -72,13 +71,13 @@ Next you should add block type to plugin manager
 
 ```
 'atblock' => array(
-    'atblock_block_plugin_manager' => array(
-        'factories' => array(
+    'atblock_block_plugin_manager' => [
+        'factories' => [
             'block_type_simple' => function ($pluginManager) {
                 return new SimpleBlockType();
             },
-        )
-    ),
+        ]
+    ],
 ),
 ```
 
@@ -86,13 +85,13 @@ or
 
 ```
 'atblock' => array(
-    'atblock_block_plugin_manager' => array(
-        'factories' => array(
+    'atblock_block_plugin_manager' => [
+        'factories' => [
             'block_type_customtemplate' => function ($pluginManager) {
                 return new CustomTemplate($pluginManager->getServiceLocator()->get('ViewRenderer'));
             },
-        )
-    ),
+        ]
+    ],
 ),
 ```
 
@@ -101,6 +100,6 @@ or
 In your layout or view script just call view helper
 
 ```
-<?php echo $this->atBlock('block_type_simple', array('additional_content' => 'some content')) ?>
-<?php echo $this->atBlock('block_type_customtemplate', array(...)) ?>
+<?php echo $this->atBlock('block_type_simple', ['additional_content' => 'some content']) ?>
+<?php echo $this->atBlock('block_type_customtemplate', [...]) ?>
 ```
